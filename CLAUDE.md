@@ -49,7 +49,10 @@ A modern, visually stunning, and performant portfolio website showcasing a softw
 portfolio-v2/
 ├── .claude/
 │   └── commands/
-│       └── scope.md          # /scope command definition
+│       ├── scope.md          # /scope command definition
+│       ├── ui-designer.md    # /ui-designer subagent command
+│       ├── frontend-dev.md   # /frontend-dev subagent command
+│       └── qa-tester.md      # /qa-tester subagent command
 ├── app/                      # Next.js App Router
 │   ├── layout.tsx           # Root layout
 │   ├── page.tsx             # Homepage
@@ -216,6 +219,125 @@ This project follows an 8-phase development approach:
 - When you need detailed task lists and requirements
 - When you're unsure what to work on next
 
+### Specialized Subagent Commands
+
+After loading a scope, you can use specialized subagent commands to delegate work to autonomous agents with specific expertise. These agents will automatically read `current-scope.md` and work according to the current phase requirements.
+
+#### /ui-designer
+
+**Purpose**: Launch a UI/UX Designer subagent to handle design and user experience tasks.
+
+**Usage**:
+```
+/ui-designer
+```
+
+**Responsibilities**:
+- Design system implementation (colors, typography, spacing, design tokens)
+- Component visual design and layout
+- User experience and interaction design
+- Accessibility implementation (WCAG 2.1 Level AA)
+- Responsive and mobile-first design
+- Animation and micro-interaction design
+- Visual polish and consistency
+
+**When to use**:
+- When working on visual components and UI
+- When implementing the design system
+- When you need to create or refine component aesthetics
+- When ensuring design consistency across the app
+
+#### /frontend-dev
+
+**Purpose**: Launch a Frontend Engineer subagent to handle feature implementation and coding tasks.
+
+**Usage**:
+```
+/frontend-dev
+```
+
+**Responsibilities**:
+- Feature implementation according to scope
+- Writing clean, type-safe TypeScript code
+- Creating reusable component architecture
+- State management implementation
+- API and service integration
+- Performance optimization
+- Error handling and validation
+- Code documentation
+
+**When to use**:
+- When implementing new features
+- When integrating APIs or services
+- When building complex logic or functionality
+- When optimizing code performance
+- When refactoring existing code
+
+#### /qa-tester
+
+**Purpose**: Launch a QA Tester subagent to handle testing and quality assurance.
+
+**Usage**:
+```
+/qa-tester
+```
+
+**Responsibilities**:
+- Writing unit, integration, and E2E tests
+- Accessibility testing and validation
+- Responsive design testing across devices
+- Performance testing (Lighthouse, Core Web Vitals)
+- Cross-browser compatibility testing
+- Bug identification and edge case testing
+- Verifying acceptance criteria
+- Regression testing
+
+**When to use**:
+- After implementing features
+- When you need comprehensive test coverage
+- When verifying accessibility compliance
+- When checking performance metrics
+- Before completing a scope phase
+
+### Subagent Workflow
+
+**Recommended Development Flow**:
+
+1. **Load Scope**: Start by loading the appropriate scope
+   ```
+   /scope foundation
+   ```
+
+2. **Design Phase**: Use UI/UX Designer for visual design
+   ```
+   /ui-designer
+   ```
+
+3. **Implementation Phase**: Use Frontend Engineer for coding
+   ```
+   /frontend-dev
+   ```
+
+4. **Testing Phase**: Use QA Tester for quality assurance
+   ```
+   /qa-tester
+   ```
+
+5. **Iterate**: Repeat as needed for each feature or section
+
+**Key Benefits**:
+- 🎯 **Specialized Expertise**: Each agent focuses on their domain
+- 🤖 **Autonomous Execution**: Agents work independently based on the scope
+- 📋 **Scope-Aware**: All agents read and follow `current-scope.md`
+- ⚡ **Efficient Workflow**: Parallel execution of design, development, and testing
+- ✅ **Quality Assurance**: Built-in testing and validation at every step
+
+**Important Notes**:
+- Always load a scope before using subagent commands
+- Agents automatically read `current-scope.md` for context
+- You can use multiple agents sequentially or for different tasks
+- Each agent operates autonomously and completes tasks without requiring approval prompts
+
 ---
 
 ## Scope-Based Development
@@ -370,7 +492,29 @@ This project follows an 8-phase development approach:
 
 ## Quick Start
 
-### For Development
+### For Development with Subagents (Recommended)
+
+1. **Load a scope**:
+
+   ```
+   /scope foundation
+   ```
+
+2. **Launch specialized subagents** to work on different aspects:
+
+   ```
+   /ui-designer     # For design and UX work
+   /frontend-dev    # For feature implementation
+   /qa-tester       # For testing and QA
+   ```
+
+3. **Agents work autonomously**: Each agent reads `current-scope.md` and completes tasks in their domain
+
+4. **Monitor progress**: Review what each agent accomplishes
+
+5. **Iterate**: Continue with next features or scope
+
+### For Manual Development
 
 1. **Load a scope**:
 
@@ -555,6 +699,8 @@ See `.env.example` for complete list.
 
 📋 **Use `/scope <scope-name>` to switch between project areas**
 
+🤖 **Use subagent commands (`/ui-designer`, `/frontend-dev`, `/qa-tester`) for specialized work**
+
 ✅ **Follow the scope's task list systematically**
 
 🧪 **Test as you build, don't leave it for later**
@@ -569,4 +715,14 @@ See `.env.example` for complete list.
 
 ---
 
-**Remember**: The scope documents are your blueprint. Use them!
+## Recommended Workflow
+
+1. Load scope: `/scope <scope-name>`
+2. Design: `/ui-designer`
+3. Implement: `/frontend-dev`
+4. Test: `/qa-tester`
+5. Repeat for next feature
+
+---
+
+**Remember**: The scope documents are your blueprint. Use them! The subagents are your team. Leverage them!
