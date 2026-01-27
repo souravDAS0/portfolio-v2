@@ -1,7 +1,7 @@
 # CLAUDE.md - Project Guide for AI Assistance
 
 **Project**: Modern Developer Portfolio v2
-**Last Updated**: 2025-01-16
+**Last Updated**: 2025-01-17
 **Status**: Planning Complete / Development Ready
 
 ---
@@ -13,10 +13,11 @@
 3. [Technology Stack](#technology-stack)
 4. [Development Workflow](#development-workflow)
 5. [Custom Commands](#custom-commands)
-6. [Scope-Based Development](#scope-based-development)
-7. [Key Guidelines](#key-guidelines)
-8. [Reference Documents](#reference-documents)
-9. [Quick Start](#quick-start)
+6. [Specialized Subagents](#specialized-subagents)
+7. [Scope-Based Development](#scope-based-development)
+8. [Key Guidelines](#key-guidelines)
+9. [Reference Documents](#reference-documents)
+10. [Quick Start](#quick-start)
 
 ---
 
@@ -49,7 +50,10 @@ A modern, visually stunning, and performant portfolio website showcasing a softw
 portfolio-v2/
 ├── .claude/
 │   └── commands/
-│       └── scope.md          # /scope command definition
+│       ├── scope.md          # /scope command definition
+│       ├── designer.md       # /designer subagent (UI/UX)
+│       ├── engineer.md       # /engineer subagent (Frontend)
+│       └── qa.md             # /qa subagent (Testing)
 ├── app/                      # Next.js App Router
 │   ├── layout.tsx           # Root layout
 │   ├── page.tsx             # Homepage
@@ -218,6 +222,180 @@ This project follows an 8-phase development approach:
 
 ---
 
+## Specialized Subagents
+
+This project includes three specialized AI subagents designed to work on different aspects of development. Each subagent automatically references `current-scope.md` to understand the current phase and tasks.
+
+### Workflow
+
+1. **Load a scope** first using `/scope <scope-name>`
+2. **Invoke a subagent** based on what you need to work on
+3. **The subagent works autonomously** following `current-scope.md`
+
+### Available Subagents
+
+#### 1. `/designer` - UI/UX Designer Agent
+
+**Focus**: Design implementation, styling, theming, and user experience
+
+**Responsibilities**:
+
+- Design system implementation (colors, typography, spacing)
+- Component styling with Tailwind CSS and Shadcn UI
+- Dark/light theme implementation
+- Responsive design (mobile-first)
+- Accessibility (WCAG 2.1 Level AA)
+- Micro-interactions and animations
+- Visual consistency and brand alignment
+
+**When to use**:
+
+- Need to style components
+- Implementing design system
+- Working on theme/dark mode
+- Creating responsive layouts
+- Ensuring visual consistency
+- Designing user interactions
+
+**Example**:
+
+```
+/scope foundation
+/designer
+```
+
+---
+
+#### 2. `/engineer` - Frontend Engineer Agent
+
+**Focus**: Technical implementation, functionality, and architecture
+
+**Responsibilities**:
+
+- React component development
+- TypeScript implementation (strict typing)
+- Component logic and state management
+- API integrations and data fetching
+- Performance optimization
+- Error handling and edge cases
+- Next.js best practices (Server/Client Components)
+
+**When to use**:
+
+- Building component functionality
+- Implementing business logic
+- Working with TypeScript types
+- Integrating with APIs
+- Optimizing performance
+- Handling errors and loading states
+
+**Example**:
+
+```
+/scope foundation
+/engineer
+```
+
+---
+
+#### 3. `/qa` - QA Tester Agent
+
+**Focus**: Testing, quality assurance, and validation
+
+**Responsibilities**:
+
+- Functional testing (user interactions, forms, navigation)
+- Accessibility testing (keyboard nav, screen readers, ARIA)
+- Performance testing (Lighthouse, Core Web Vitals)
+- Cross-browser testing (Chrome, Firefox, Safari, Edge)
+- Visual testing (responsive, themes, animations)
+- Code quality review (TypeScript, ESLint)
+- Acceptance criteria validation
+
+**When to use**:
+
+- After implementing features
+- Validating acceptance criteria
+- Running comprehensive tests
+- Checking accessibility compliance
+- Performance validation
+- Before completing a scope phase
+
+**Example**:
+
+```
+/scope foundation
+/qa
+```
+
+---
+
+### Subagent Best Practices
+
+#### Sequential Workflow (Recommended)
+
+For complete feature development, use subagents in sequence:
+
+```bash
+# 1. Load the scope
+/scope foundation
+
+# 2. Design the feature
+/designer
+
+# 3. Implement the functionality
+/engineer
+
+# 4. Test and validate
+/qa
+```
+
+#### Parallel Workflow (Advanced)
+
+For specific tasks, invoke only the needed subagent:
+
+```bash
+# Just need styling work
+/scope core-sections
+/designer
+
+# Just need functionality
+/scope projects-portfolio
+/engineer
+
+# Just need testing
+/scope contact-integration
+/qa
+```
+
+#### How Subagents Work
+
+1. **Automatic Context**: Each subagent automatically reads `current-scope.md`
+2. **Task Identification**: Subagent identifies relevant tasks from the scope
+3. **Specialized Work**: Focuses only on their area of expertise
+4. **Scope Compliance**: Follows requirements and acceptance criteria
+5. **Quality Standards**: Adheres to project guidelines and standards
+
+#### Subagent + Scope Integration
+
+**Key Benefits**:
+
+- 🎯 Focused expertise on specific development areas
+- 📋 Automatic alignment with current scope tasks
+- ✅ Systematic task completion
+- 🔄 Clear separation of concerns
+- 📈 Improved code quality and consistency
+
+**Important Notes**:
+
+- Always load a scope BEFORE using a subagent
+- Subagents reference `current-scope.md` automatically
+- Each subagent has specialized knowledge and focus
+- Subagents work independently but can be used in sequence
+- All subagents follow project standards from CLAUDE.md
+
+---
+
 ## Scope-Based Development
 
 ### How to Use Scopes
@@ -229,7 +407,6 @@ This project follows an 8-phase development approach:
    ```
 
 2. **Read `current-scope.md`** to understand:
-
    - Objectives for this phase
    - Detailed task list
    - Technical requirements
@@ -237,7 +414,6 @@ This project follows an 8-phase development approach:
    - Files to create/modify
 
 3. **Work through the tasks** systematically:
-
    - Check off tasks as you complete them
    - Refer to code examples in the scope
    - Follow the design considerations
@@ -332,7 +508,6 @@ This project follows an 8-phase development approach:
 ### Primary Documents
 
 1. **Research.md**: Comprehensive React ecosystem research (2025)
-
    - UI component libraries
    - Animation libraries
    - State management solutions
@@ -340,7 +515,6 @@ This project follows an 8-phase development approach:
    - Recommended tech stack
 
 2. **SOW.md**: Statement of Work
-
    - Project objectives and scope
    - Technical requirements
    - Deliverables
@@ -348,7 +522,6 @@ This project follows an 8-phase development approach:
    - Success criteria
 
 3. **scope-details/**: Detailed phase documentation
-
    - Task breakdowns
    - Technical specifications
    - Code examples
@@ -370,7 +543,7 @@ This project follows an 8-phase development approach:
 
 ## Quick Start
 
-### For Development
+### For Development (Recommended Workflow)
 
 1. **Load a scope**:
 
@@ -378,17 +551,44 @@ This project follows an 8-phase development approach:
    /scope foundation
    ```
 
-2. **Read `current-scope.md`** to understand what needs to be built
+2. **Use specialized subagents** to work on different aspects:
 
-3. **Start working** on the tasks outlined in the scope
+   ```bash
+   # Design and styling
+   /designer
 
-4. **Test continuously** as you build
+   # Implementation and functionality
+   /engineer
 
-5. **Reference the scope** whenever you need:
+   # Testing and validation
+   /qa
+   ```
+
+3. **Or work manually** by reading `current-scope.md` and implementing tasks yourself
+
+4. **Reference the scope** whenever you need:
    - Task details
    - Code examples
    - Data structures
    - Acceptance criteria
+
+### Quick Development Pattern
+
+**Sequential approach** (recommended for complete features):
+
+```bash
+/scope foundation        # Load the scope
+/designer               # Design & style components
+/engineer               # Implement functionality
+/qa                     # Test and validate
+```
+
+**Targeted approach** (for specific tasks):
+
+```bash
+/scope foundation        # Load the scope
+/engineer               # Just implement functionality
+```
 
 ### For New Features
 
