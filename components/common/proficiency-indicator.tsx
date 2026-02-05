@@ -238,7 +238,7 @@ function CircularProgress({
 function DotsProgress({
   value,
   label,
-  delay,
+  delay = 0,
   className,
 }: Omit<ProficiencyIndicatorProps, "type" | "size" | "showValue">) {
   const totalDots = 5;
@@ -257,7 +257,7 @@ function DotsProgress({
             transition={{
               duration: 0.2,
               delay: delay + index * 0.1,
-              ease: "easeOut",
+              ease: "easeOut" as const,
             }}
             className={cn(
               "h-2 w-2 rounded-full",
@@ -276,7 +276,7 @@ function DotsProgress({
 function StarsProgress({
   value,
   label,
-  delay,
+  delay = 0,
   className,
 }: Omit<ProficiencyIndicatorProps, "type" | "size" | "showValue">) {
   const totalStars = 5;
@@ -295,7 +295,7 @@ function StarsProgress({
             transition={{
               duration: 0.3,
               delay: delay + index * 0.1,
-              ease: "easeOut",
+              ease: "easeOut" as const,
             }}
             className={cn(
               "h-5 w-5",
