@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
 import { ProjectsSection } from "@/components/sections/projects";
+import { ExperienceSection } from "@/components/sections/experience";
 import { BackToTop } from "@/components/common/back-to-top";
 
 /**
@@ -17,6 +18,7 @@ import { BackToTop } from "@/components/common/back-to-top";
  * - About (personal story & stats)
  * - Skills (technical expertise)
  * - Projects (portfolio showcase)
+ * - Experience (work history, education, certifications)
  * - Footer (links & contact)
  * - Back to top button
  *
@@ -47,8 +49,10 @@ export default function Home() {
         {/* Projects Section */}
         <ProjectsSection />
 
+        {/* Experience Section */}
+        <ExperienceSection />
+
         {/* TODO: Add more sections in future phases
-         * - Experience & Timeline
          * - Contact Form
          * - Blog (optional)
          */}
