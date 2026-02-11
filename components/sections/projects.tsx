@@ -36,7 +36,7 @@ export function ProjectsSection() {
           <Button asChild size="lg" variant="outline">
             <Link href="/projects" className="group">
               View All Projects
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
         </div>

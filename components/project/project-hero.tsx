@@ -123,7 +123,7 @@ export function ProjectHero({ project, className }: ProjectHeroProps) {
                   className="group"
                 >
                   View Live Demo
-                  <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               </Button>
             )}
@@ -140,7 +140,7 @@ export function ProjectHero({ project, className }: ProjectHeroProps) {
                   rel="noopener noreferrer"
                   className="group"
                 >
-                  <Github className="mr-2 h-4 w-4" />
+                  <Github className="h-4 w-4" />
                   View on GitHub
                 </a>
               </Button>
@@ -158,7 +158,7 @@ export function ProjectHero({ project, className }: ProjectHeroProps) {
                 }
               >
                 <a href={caseStudyLink.url}>
-                  <FileText className="mr-2 h-4 w-4" />
+                  <FileText className="h-4 w-4" />
                   Case Study
                 </a>
               </Button>

@@ -54,13 +54,13 @@ export function ResumeDownload({
           <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
             <Button asChild>
               <a href={resumeUrl} download>
-                <Download className="mr-2 h-4 w-4" />
+                <Download className="h-4 w-4" />
                 Download PDF
               </a>
             </Button>
             <Button variant="outline" asChild>
               <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
-                <Eye className="mr-2 h-4 w-4" />
+                <Eye className="h-4 w-4" />
                 View Online
               </a>
             </Button>
